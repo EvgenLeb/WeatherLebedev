@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Weather.Models.WeatherRecord>
+
+<h2>WeatherRecords</h2>
+<a href="@Url.Action("Create", "WeatherRecords")" class="btn btn-primary">Create New WeatherRecord</a>
+<form asp-action="Index" method="get">
+    <div class="form-group">
+        <label for="searchString">Search</label>
+        <input type="text" class="form-control" id="searchString" name="city">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<table>
+    <tr>
+        <th>City</th>
+        <th>Temperature</th>
+        <th>Date</th>
+    </tr>
+
+    @foreach (var weatherRecord in Model)
+    {
+        <tr>
+            <td>@weatherRecord.City</td>
+            <td>@weatherRecord.Temperature</td>
+            <td>@weatherRecord.Date</td>
+        </tr>
+    }
+</table>
